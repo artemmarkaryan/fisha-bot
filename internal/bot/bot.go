@@ -47,6 +47,8 @@ func NewBot(ctx context.Context, cfg BotConfig) (*Bot, error) {
 
 func (b *Bot) Register(ctx context.Context) {
 	b.bot.Handle("/start", b.start(ctx))
+	b.bot.Handle("/forget", b.forget(ctx))
+	b.bot.Handle(tele.OnCallback, b.callback(ctx))
 	b.bot.Handle(tele.OnText, b.defaultHandler(ctx))
 }
 

@@ -1,7 +1,9 @@
 github.com/amoghe/distillog v0.0.0-20180726233512-ae382b35b717 h1:cdJG5d0xtOHgeev36KoJCRZMOct8GzxXCcJgyzUyUd4=
 github.com/amoghe/distillog v0.0.0-20180726233512-ae382b35b717/go.mod h1:7DXz/QzS6kSSk2b7TqXmf4RGWX3bVsdyxpwWpQ1i0J4=
-github.com/artemmarkaryan/fisha-facade v0.0.0-20220512202158-9879edb3eb3c h1:MQHy7YySSlX20Zd+cMd4qtYUMerThJigJRQsBjOaFJ4=
-github.com/artemmarkaryan/fisha-facade v0.0.0-20220512202158-9879edb3eb3c/go.mod h1:ws5/Hf0Xdx+KRxTV/icXhezktdSaVs51vRXLLHUqlec=
+github.com/artemmarkaryan/fisha-facade v0.0.0-20220516204808-526f15ef29ca h1:azoDODSe3wLrW+ACTBGSL8yMyNYRfn2NoemlsOWGU5g=
+github.com/artemmarkaryan/fisha-facade v0.0.0-20220516204808-526f15ef29ca/go.mod h1:AICGkaC+TxXcu153gWiABncCOzA9BexrT5f2ode8VTQ=
+github.com/artemmarkaryan/fisha-facade v0.0.0-20220516210143-76537fac8266 h1:8r090tuopY+zo8ei/N+P7tdmJKU6QsFLa6NT/iAS+t0=
+github.com/artemmarkaryan/fisha-facade v0.0.0-20220516210143-76537fac8266/go.mod h1:AICGkaC+TxXcu153gWiABncCOzA9BexrT5f2ode8VTQ=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
