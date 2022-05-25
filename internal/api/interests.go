@@ -8,7 +8,7 @@ import (
 )
 
 func (a API) Interests(ctx context.Context) ([]*api.InterestsResponse_Interest, error) {
-	r, err := a.get("/interests")
+	r, err := a.get(ctx, "/interests")
 	if err != nil {
 		return nil, err
 	}

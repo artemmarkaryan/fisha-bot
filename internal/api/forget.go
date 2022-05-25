@@ -7,7 +7,7 @@ import (
 )
 
 func (a API) Forget(ctx context.Context, user int64) error {
-	_, err := a.post("/forget", api.UserIdRequest{UserId: user})
+	_, err := a.post(ctx, "/forget", api.UserIdRequest{UserId: user})
 	if err != nil {
 		return err
 	}

@@ -16,10 +16,11 @@ func main() {
 
 	ctx = initLogger(ctx)
 
-	b, err := bot.NewBot(ctx, bot.BotConfig{
+	b, err := bot.NewBot(ctx, bot.Config{
 		Token:   os.Getenv("TELEGRAM_TOKEN"),
 		API:     api.NewAPI(os.Getenv("SERVER_HOST")),
 		Timeout: config.BotTimeout,
+		Debug:   map[string]bool{"true": true}[os.Getenv("DEBUG")],
 	})
 
 	if err != nil {
@@ -27,6 +28,7 @@ func main() {
 		return
 	}
 
+	logy.Log(ctx).Infoln("Running bot...")
 	b.Start()
 }
 

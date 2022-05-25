@@ -12,7 +12,7 @@ func (b *Bot) handleForUser(ctx context.Context, uID int64, h tele.HandlerFunc) 
 	b.individualHandlers[uID] = h
 }
 
-func (b Bot) defaultHandler(ctx context.Context) tele.HandlerFunc {
+func (b *Bot) defaultHandler(ctx context.Context) tele.HandlerFunc {
 	return func(t tele.Context) error {
 		logy.Log(ctx).Debugf("default handler triggered for user #%v", t.Sender().ID)
 

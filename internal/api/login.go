@@ -8,12 +8,12 @@ import (
 )
 
 func (a API) Login(ctx context.Context, user int64) (isNew bool, err error) {
-	r, err := a.post("/login", api.UserIdRequest{UserId: user})
+	r, err := a.post(ctx, "/login", api.UserIdRequest{UserId: user})
 	if err != nil {
 		return
 	}
 
-	obj, err := marchy.Obj[*api.LoginResponse](ctx, r.Body)
+	obj, err := marchy.Obj[*api.IsNewMessage](ctx, r.Body)
 	if err != nil {
 		return
 	}
