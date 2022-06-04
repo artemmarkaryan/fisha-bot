@@ -10,6 +10,7 @@ import (
 )
 
 var reactionPattern = callback.NewPattern("reac")
+var recommendPattern = callback.NewPattern("rcmd")
 
 func (b *Bot) recommend(ctx context.Context) tele.HandlerFunc {
 	return func(t tele.Context) error {
@@ -19,11 +20,19 @@ func (b *Bot) recommend(ctx context.Context) tele.HandlerFunc {
 			return err
 		}
 
+		if err = b.api.AckRecommendation(ctx, t.Chat().ID, activity.Id); err != nil {
+			b.log(ctx, t, err)
+			return err
+		}
+
 		r := &tele.ReplyMarkup{}
-		var rows = []tele.Row{r.Row(
-			tele.Btn{Text: "👍", Data: callback.MakeCallbackData(reactionPattern, reaction.Like.Code)},
-			tele.Btn{Text: "👎", Data: callback.MakeCallbackData(reactionPattern, reaction.Dislike.Code)},
-		)}
+		var rows = []tele.Row{
+			r.Row(
+				tele.Btn{Text: "👍", Data: callback.MakeCallbackData(reactionPattern, reaction.LikeReaction.Code)},
+				tele.Btn{Text: "👎", Data: callback.MakeCallbackData(reactionPattern, reaction.DislikeReaction.Code)},
+			),
+			r.Row(tele.Btn{Text: "Ещё", Data: callback.MakeCallbackData(recommendPattern, "")}),
+		}
 
 		r.Inline(rows...)
 

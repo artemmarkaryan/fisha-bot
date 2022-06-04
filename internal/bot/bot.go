@@ -66,6 +66,8 @@ func (b *Bot) Register(ctx context.Context) {
 
 	// callbacks
 	b.HandleCallback(ctx, interestsPattern, b.addInterestCallback(ctx))
+	b.HandleCallback(ctx, reactionPattern, b.reactionCallback(ctx))
+	b.HandleCallback(ctx, recommendPattern, b.recommend(ctx))
 
 	// helpers
 	b.Handle(ctx, "/forget", b.forget(ctx))
@@ -83,10 +85,9 @@ func (b *Bot) HandleCallback(_ context.Context, pattern [4]byte, h tele.HandlerF
 
 func (b *Bot) callback(ctx context.Context) tele.HandlerFunc {
 	return func(t tele.Context) (err error) {
-		logy.Log(ctx).Debugf("handling callback: %v", t.Callback())
-
 		if len(t.Callback().Data) < callback.PatternLen {
 			logy.Log(ctx).Errorf("too short callback data: %v", t.Callback())
+			return
 		}
 
 		pt, _, err := callback.Parse(t.Callback().Data)

@@ -8,15 +8,23 @@ type Reaction struct {
 	Emoji string
 }
 
+const LikeCode = "like"
+const DislikeCode = "dislike"
+
 var (
-	Like = Reaction{
+	LikeReaction = Reaction{
 		Emoji:                 "👍",
-		Code:                  "like",
+		Code:                  LikeCode,
 		ReactRequest_Reaction: api.ReactRequest_LIKE,
 	}
-	Dislike = Reaction{
+	DislikeReaction = Reaction{
 		Emoji:                 "👎",
-		Code:                  "dislike",
+		Code:                  DislikeCode,
 		ReactRequest_Reaction: api.ReactRequest_DISLIKE,
 	}
 )
+
+var Mapping = map[string]Reaction{
+	LikeCode:    LikeReaction,
+	DislikeCode: DislikeReaction,
+}
