@@ -8,7 +8,7 @@ import (
 )
 
 func (a API) Login(ctx context.Context, user int64) (isNew bool, err error) {
-	r, err := a.post(ctx, "/login", api.UserIdRequest{UserId: user})
+	r, err := a.post(ctx, "/login", api.IdMessage{Id: user})
 	if err != nil {
 		return
 	}

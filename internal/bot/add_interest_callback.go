@@ -2,6 +2,7 @@ package bot
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 
 	"github.com/artemmarkaryan/fisha/bot/internal/bot/callback"
@@ -23,14 +24,18 @@ func (b *Bot) addInterestCallback(ctx context.Context) tele.HandlerFunc {
 
 		isNew, err := b.api.AddInterest(ctx, t.Sender().ID, int64(interestID))
 		if err != nil {
-			b.log(ctx, t, err)
+			return
+		}
+
+		interestName, err := b.api.InterestById(ctx, int64(interestID))
+		if err != nil {
 			return
 		}
 
 		if isNew {
-			_ = t.Send("✅ Интерес добавлен")
+			_ = t.Send(fmt.Sprintf("✅ Интерес %q добавлен", interestName))
 		} else {
-			_ = t.Send("👌 Этот интерес у вас уже есть")
+			_ = t.Send(fmt.Sprintf("👌 Интерес %q у вас уже есть", interestName))
 		}
 
 		return

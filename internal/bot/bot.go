@@ -59,6 +59,10 @@ func (b *Bot) Register(ctx context.Context) {
 	// user commands
 	b.Handle(ctx, "/start", b.start(ctx))
 	b.Handle(ctx, "/choose_interests", b.chooseInterests(ctx))
+	b.Handle(ctx, "/recommend", b.recommend(ctx))
+
+	// location
+	b.Handle(ctx, tele.OnLocation, b.setLocation(ctx))
 
 	// callbacks
 	b.HandleCallback(ctx, interestsPattern, b.addInterestCallback(ctx))

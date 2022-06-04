@@ -8,7 +8,7 @@ type Pattern [PatternLen]byte
 
 // NewPattern may panic
 func NewPattern(s string) Pattern {
-	return *(*Pattern)(([]byte(s))[:]) // ugh
+	return *(*Pattern)(([]byte(s))[:])
 }
 
 func MakeCallbackData(p Pattern, data string) string {

@@ -8,7 +8,7 @@ import (
 )
 
 func (a API) AddInterest(ctx context.Context, user, interest int64) (isNew bool, err error) {
-	resp, err := a.post(ctx, "/addInterest", api.AddInterestRequest{
+	resp, err := a.post(ctx, "/add-interest", api.AddInterestRequest{
 		InterestId: interest,
 		UserId:     user,
 	})
