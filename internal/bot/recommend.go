@@ -14,6 +14,17 @@ var recommendPattern = callback.NewPattern("rcmd")
 
 func (b *Bot) recommend(ctx context.Context) tele.HandlerFunc {
 	return func(t tele.Context) error {
+		hl, err := b.api.UserHasLocation(ctx, t.Chat().ID)
+		if err != nil {
+			b.log(ctx, t, err)
+			return err
+		}
+
+		if !hl {
+			_ = t.Send("А мы не знаем, где вы(\nПожалуйста, отправьте геопозиацию, вокруг которой нам искать места")
+			return nil
+		}
+
 		activity, err := b.api.Recommend(ctx, t.Chat().ID)
 		if err != nil {
 			b.log(ctx, t, err)
