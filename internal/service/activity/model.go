@@ -18,14 +18,15 @@ type Activity struct {
 	Meta      string
 }
 
-func NewActivityFromProto(message *api.ActivityMessage) Activity {
-	return Activity{
-		Id:      message.GetId(),
-		Name:    message.GetName(),
-		Address: message.GetAddress(),
-		Meta:    message.GetMeta(),
-		Lat:     message.GetLat(),
-		Lon:     message.GetLon(),
+func NewActivityFromProto(message *api.ActivityMessage) (bool, Activity) {
+	activity := message.GetActivity()
+	return message.GetFound(), Activity{
+		Id:      activity.GetId(),
+		Name:    activity.GetName(),
+		Address: activity.GetAddress(),
+		Meta:    activity.GetMeta(),
+		Lat:     activity.GetLat(),
+		Lon:     activity.GetLon(),
 	}
 }
 

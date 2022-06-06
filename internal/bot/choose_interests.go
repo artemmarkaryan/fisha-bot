@@ -28,7 +28,7 @@ func (b *Bot) chooseInterests(ctx context.Context) tele.HandlerFunc {
 
 		r.Inline(rows...)
 
-		_, _ = b.bot.Send(t.Sender(), "Выбери свои интересы", r)
+		_, _ = b.bot.Send(t.Sender(), "Пожалуйста, выберите свои интересы", r)
 
 		return nil
 	}

@@ -8,7 +8,7 @@ import (
 	"github.com/artemmarkaryan/fisha/bot/internal/service/activity"
 )
 
-func (a API) Recommend(ctx context.Context, userID int64) (ac activity.Activity, err error) {
+func (a API) Recommend(ctx context.Context, userID int64) (found bool, ac activity.Activity, err error) {
 	r, err := a.post(ctx, "/recommend", api.IdMessage{Id: userID})
 	if err != nil {
 		return
@@ -19,5 +19,7 @@ func (a API) Recommend(ctx context.Context, userID int64) (ac activity.Activity,
 		return
 	}
 
-	return activity.NewActivityFromProto(protoA), nil
+	found, ac = activity.NewActivityFromProto(protoA)
+
+	return
 }

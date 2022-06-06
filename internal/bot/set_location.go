@@ -15,7 +15,7 @@ func (b *Bot) setLocation(ctx context.Context) tele.HandlerFunc {
 			return
 		}
 
-		_ = t.Send("Теперь мы знаем где вы...")
+		_ = t.Send("Теперь мы знаем, где вы...")
 
 		return err
 	}
