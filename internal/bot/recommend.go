@@ -52,7 +52,7 @@ func (b *Bot) recommend(ctx context.Context) tele.HandlerFunc {
 		r.Inline(rows...)
 
 		err1 := t.Send(&tele.Location{Lat: activity.Lat, Lng: activity.Lon})
-		err2 := t.Send(activity.Message(), r, tele.ModeHTML)
+		err2 := t.Send(activity.Message(ctx), r, tele.ModeHTML)
 
 		if err1 != nil {
 			b.log(ctx, t, fmt.Errorf("send location: %v", err1))
