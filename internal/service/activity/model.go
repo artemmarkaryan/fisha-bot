@@ -57,13 +57,14 @@ func (a Activity) Message(ctx context.Context) string {
 	}
 
 	if m.Phones != nil {
+		s = append(s, "")
 		for _, phone := range m.Phones {
-			s = append(s, "📞 "+phone.Formatted)
+			s = append(s, "📞 "+format.Phone(phone.Formatted, phone.Formatted))
 		}
 	}
 
 	if m.Url != "" {
-		s = append(s, format.Link("\nСайт", m.Url))
+		s = append(s, "\n"+format.Link("Сайт", m.Url))
 	}
 
 	return strings.Join(s, "\n")
